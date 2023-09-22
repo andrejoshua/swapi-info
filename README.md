@@ -62,6 +62,11 @@ There are few additional points i will explain given the picture:
 - This project relies on [build_runner](https://dart.dev/tools/build_runner) library. So, for every
   changes that involve annotation, be
   sure to run `flutter pub run build_runner build --delete-conflicting-outputs` and wait
+- You will see the usage of `freezed` in **all of** data classes. The `freezed` annotation ensures
+  that the object should not be modified unless necessary. The prevention was needed to persist the
+  object, retaining the source and truth of data. If there are any changes, those need to be done in
+  ViewModel. Once you send or receive the data to lower layer (API/local storage), the data needs to
+  be persistent.
 
 Issues found:
 

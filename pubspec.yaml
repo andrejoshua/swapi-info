@@ -35,6 +35,9 @@ dependencies:
   # We use auto route for screen routing
   auto_route: ^7.3.2
 
+  # Handles API calls
+  dio: ^5.3.3
+
   # Env
   flutter_dotenv: ^5.1.0
 
@@ -43,6 +46,7 @@ dependencies:
 
   # Annotation and DTO helper
   freezed: ^2.3.4
+  freezed_annotation: ^2.2.0
 
   # Dependency Injection
   get_it: ^7.6.0
@@ -61,6 +65,10 @@ dependencies:
   # ReactiveX support
   rxdart: ^0.27.7
   rxdart_ext: ^0.2.9
+
+  # Stack trace to trace the errors
+  # This will be useful for logging
+  stack_trace: ^1.11.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -83,8 +91,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
-  # Generator for freezed
-  freezed_annotation: ^2.2.0
+  # Mock server for Dio
+  http_mock_adapter: ^0.6.0
 
   # Generator for injectable
   injectable_generator: ^2.1.5
@@ -96,7 +104,7 @@ dev_dependencies:
   mobx_codegen: ^2.3.0
 
   # Mockito to mock object
-  mockito: ^5.4.1
+  mockito: ^5.4.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
