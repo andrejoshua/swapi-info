@@ -5,6 +5,14 @@ import "../colors.dart";
 import "../display_sizes.dart";
 import "../molecule/info_item.dart";
 
+/// Reusable [CardStarship] specifically built to show Homeworld data
+/// Requires [model] to show starship model
+/// Requires [starshipClass] to show starship class
+/// Requires [hyperdriveRating] to show starship's hyperdrive rating
+/// Requires [costInCredits] to show starship's cost in credits
+/// Requires [manufacturer] to show starship's manufacturer
+/// All of those values are required, and does not affect any state of each labels
+/// If there is an empty value, its own label will keep showing
 class CardStarship extends StatelessWidget {
   const CardStarship({
     required this.model,

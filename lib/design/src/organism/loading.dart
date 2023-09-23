@@ -3,15 +3,16 @@ import "package:flutter_gen/gen_l10n/dictionary.dart";
 
 import "../display_sizes.dart";
 
-/// Showing default [Dialog].
-/// The dialog is usually used to load the page
+/// Loading section
+/// Used to show Loading popup
 class Loading {
   static BuildContext? _alertContext;
   static bool _isShowing = false;
 
-  /// Show Dialog
-  static void show(BuildContext context,
-      {String? loadingText, bool isDismissible = false}) {
+  /// Showing default [Dialog] for information error.
+  /// View [context] is mandatory to show the loading
+  /// [isDismissible] is used to enforce loading to keep showing in order to lock user action while operation is running
+  static void show(BuildContext context, {bool isDismissible = false}) {
     if (!_isShowing) {
       _isShowing = true;
       showDialog(
