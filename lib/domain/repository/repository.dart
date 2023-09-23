@@ -11,9 +11,9 @@ mixin Repository {
 
   Single<CharacterDetail> getCharacterById(String id);
 
-  Single<List<Starship>> getStarshipsByIds(List<String> ids);
+  Single<Starship> getStarshipById(String id);
 
-  Single<List<Vehicle>> getVehiclesByIds(List<String> ids);
+  Single<Vehicle> getVehicleById(String id);
 
   Single<Homeworld> getHomeworldById(String id);
 }

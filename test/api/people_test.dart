@@ -60,7 +60,7 @@ void main() {
     // This test ensures that no JSON mapping is incorrect
     // The test should be failed if there is any wrong JSON mapping
     test(
-        "When requesting for get characters, return successful response with no empty results",
+        "When requesting get characters, return successful response with no empty results",
         () async {
       final ApiService service = ApiService(getIt.get<ApiClient>());
 
@@ -73,7 +73,7 @@ void main() {
     // This test ensures that no JSON mapping is incorrect
     // The test should be failed if there is any wrong JSON mapping
     test(
-        "When requesting for get character by id 1, return successful response by checking name is not empty",
+        "When requesting get character by id 1, return successful response by checking name is not empty",
         () async {
       final ApiService service = ApiService(getIt.get<ApiClient>());
 

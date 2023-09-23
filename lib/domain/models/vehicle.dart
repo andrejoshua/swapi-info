@@ -8,7 +8,8 @@ class Vehicle with _$Vehicle {
   const factory Vehicle(
     String name,
     String model,
-    int costInCredits,
+    // Cost in credits may return unknown
+    int? costInCredits,
   ) = _Vehicle;
 
   const Vehicle._();

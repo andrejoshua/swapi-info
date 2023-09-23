@@ -11,6 +11,10 @@ class GetVehiclesByIdsUseCase {
   GetVehiclesByIdsUseCase(this._repository);
 
   Single<List<Vehicle>> execute(List<String> ids) {
-    return _repository.getVehiclesByIds(ids);
+    final List<Single<Vehicle>> idObs = ids.map((String id) {
+      return _repository.getVehicleById(id);
+    }).toList(growable: false);
+
+    return Rx.zip(idObs, (List<Vehicle> values) => values).singleOrError();
   }
 }
