@@ -5,3 +5,4 @@ const double kSpaceMarginMedium = 16.0;
 const double kSpaceMarginSmall = 12.0;
 
 const double kRadiusDefault = 8.0;
+const double kRadiusLoading = 24.0;

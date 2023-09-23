@@ -19,9 +19,14 @@ const TextTheme kThemeText = TextTheme(
     fontWeight: FontWeight.normal,
     color: kColorText,
   ),
-  bodySmall: TextStyle(
+  labelSmall: TextStyle(
     fontSize: kSizeLabel,
     fontWeight: FontWeight.w600,
+    color: kColorText,
+  ),
+  labelLarge: TextStyle(
+    fontSize: kSizeLabelLarge,
+    fontWeight: FontWeight.w500,
     color: kColorText,
   ),
 );
