@@ -25,7 +25,9 @@ Before working on this project, there are some configurations you need to do
     - Installing Xcode
 5. After all of the actions are done, try running `flutter pub get` in order to fetch all of the
    libraries
-6. Try running the app by running `flutter run`. If there are problems showing up, refer
+6. Before running the app, make sure that we have fetched the dictionary (localization) by
+   running `flutter gen-l10n`
+7. Try running the app by running `flutter run`. If there are problems showing up, refer
    to [Flutter application guide](https://appmaking.com/run-flutter-apps-on-android-device/)
 
 ## Architecture
