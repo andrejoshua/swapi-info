@@ -9,7 +9,8 @@ class Starship with _$Starship {
     String model,
     String starshipClass,
     double hyperdriveRating,
-    int costInCredits,
+    // Cost in credits may return unknown
+    int? costInCredits,
     String manufacturer,
   ) = _Starship;
 

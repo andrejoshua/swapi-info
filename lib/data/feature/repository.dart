@@ -39,35 +39,23 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Single<List<Starship>> getStarshipsByIds(List<String> ids) {
-    final List<Single<StarshipResponse>> idObs = ids.map((String id) {
-      return _service.getStarship(id);
-    }).toList(growable: false);
-
-    return Rx.zip(idObs, (List<StarshipResponse> values) {
-      return values.map((StarshipResponse item) {
-        return item.asStarship();
-      }).toList(growable: false);
-    }).singleOrError();
+  Single<Starship> getStarshipById(String id) {
+    return _service
+        .getStarship(id)
+        .map((StarshipResponse event) => event.asStarship());
   }
 
   @override
-  Single<List<Vehicle>> getVehiclesByIds(List<String> ids) {
-    final List<Single<VehicleResponse>> idObs = ids.map((String id) {
-      return _service.getVehicle(id);
-    }).toList(growable: false);
-
-    return Rx.zip(idObs, (List<VehicleResponse> values) {
-      return values.map((VehicleResponse item) {
-        return item.asVehicle();
-      }).toList(growable: false);
-    }).singleOrError();
+  Single<Vehicle> getVehicleById(String id) {
+    return _service
+        .getVehicle(id)
+        .map((VehicleResponse event) => event.asVehicle());
   }
 
   @override
   Single<Homeworld> getHomeworldById(String id) {
-    return _service.getPlanet(id).map((PlanetResponse event) {
-      return event.asHomeworld();
-    });
+    return _service
+        .getPlanet(id)
+        .map((PlanetResponse event) => event.asHomeworld());
   }
 }

@@ -49,7 +49,7 @@ void main() {
     // This test ensures that no JSON mapping is incorrect
     // The test should be failed if there is any wrong JSON mapping
     test(
-        "When requesting for get vehicle by id 1, return successful response by checking name is not empty",
+        "When requesting get vehicle by id 1, return successful response by checking name is not empty",
         () async {
       final service = ApiService(getIt.get<ApiClient>());
 

@@ -27,13 +27,13 @@ extension PeopleMapperExt on PeopleResponse {
 extension StarshipMapperExt on StarshipResponse {
   Starship asStarship() {
     return Starship(model, starshipClass, double.parse(hyperdriveRating),
-        int.parse(costInCredits), manufacturer);
+        int.tryParse(costInCredits), manufacturer);
   }
 }
 
 extension VehicleMapperExt on VehicleResponse {
   Vehicle asVehicle() {
-    return Vehicle(name, model, int.parse(costInCredits));
+    return Vehicle(name, model, int.tryParse(costInCredits));
   }
 }
 

@@ -11,6 +11,10 @@ class GetStarshipsByIdsUseCase {
   GetStarshipsByIdsUseCase(this._repository);
 
   Single<List<Starship>> execute(List<String> ids) {
-    return _repository.getStarshipsByIds(ids);
+    final List<Single<Starship>> idObs = ids.map((String id) {
+      return _repository.getStarshipById(id);
+    }).toList(growable: false);
+
+    return Rx.zip(idObs, (List<Starship> values) => values).singleOrError();
   }
 }

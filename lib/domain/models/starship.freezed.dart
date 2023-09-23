@@ -18,8 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Starship {
   String get model => throw _privateConstructorUsedError;
   String get starshipClass => throw _privateConstructorUsedError;
-  double get hyperdriveRating => throw _privateConstructorUsedError;
-  int get costInCredits => throw _privateConstructorUsedError;
+  double get hyperdriveRating =>
+      throw _privateConstructorUsedError; // Cost in credits may return unknown
+  int? get costInCredits => throw _privateConstructorUsedError;
   String get manufacturer => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $StarshipCopyWith<$Res> {
       {String model,
       String starshipClass,
       double hyperdriveRating,
-      int costInCredits,
+      int? costInCredits,
       String manufacturer});
 }
 
@@ -56,7 +57,7 @@ class _$StarshipCopyWithImpl<$Res, $Val extends Starship>
     Object? model = null,
     Object? starshipClass = null,
     Object? hyperdriveRating = null,
-    Object? costInCredits = null,
+    Object? costInCredits = freezed,
     Object? manufacturer = null,
   }) {
     return _then(_value.copyWith(
@@ -72,10 +73,10 @@ class _$StarshipCopyWithImpl<$Res, $Val extends Starship>
           ? _value.hyperdriveRating
           : hyperdriveRating // ignore: cast_nullable_to_non_nullable
               as double,
-      costInCredits: null == costInCredits
+      costInCredits: freezed == costInCredits
           ? _value.costInCredits
           : costInCredits // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       manufacturer: null == manufacturer
           ? _value.manufacturer
           : manufacturer // ignore: cast_nullable_to_non_nullable
@@ -95,7 +96,7 @@ abstract class _$$_StarshipCopyWith<$Res> implements $StarshipCopyWith<$Res> {
       {String model,
       String starshipClass,
       double hyperdriveRating,
-      int costInCredits,
+      int? costInCredits,
       String manufacturer});
 }
 
@@ -113,7 +114,7 @@ class __$$_StarshipCopyWithImpl<$Res>
     Object? model = null,
     Object? starshipClass = null,
     Object? hyperdriveRating = null,
-    Object? costInCredits = null,
+    Object? costInCredits = freezed,
     Object? manufacturer = null,
   }) {
     return _then(_$_Starship(
@@ -129,10 +130,10 @@ class __$$_StarshipCopyWithImpl<$Res>
           ? _value.hyperdriveRating
           : hyperdriveRating // ignore: cast_nullable_to_non_nullable
               as double,
-      null == costInCredits
+      freezed == costInCredits
           ? _value.costInCredits
           : costInCredits // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       null == manufacturer
           ? _value.manufacturer
           : manufacturer // ignore: cast_nullable_to_non_nullable
@@ -154,8 +155,9 @@ class _$_Starship extends _Starship {
   final String starshipClass;
   @override
   final double hyperdriveRating;
+// Cost in credits may return unknown
   @override
-  final int costInCredits;
+  final int? costInCredits;
   @override
   final String manufacturer;
 
@@ -196,7 +198,7 @@ abstract class _Starship extends Starship {
       final String model,
       final String starshipClass,
       final double hyperdriveRating,
-      final int costInCredits,
+      final int? costInCredits,
       final String manufacturer) = _$_Starship;
   const _Starship._() : super._();
 
@@ -206,8 +208,8 @@ abstract class _Starship extends Starship {
   String get starshipClass;
   @override
   double get hyperdriveRating;
-  @override
-  int get costInCredits;
+  @override // Cost in credits may return unknown
+  int? get costInCredits;
   @override
   String get manufacturer;
   @override

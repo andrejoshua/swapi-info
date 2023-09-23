@@ -17,8 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Vehicle {
   String get name => throw _privateConstructorUsedError;
-  String get model => throw _privateConstructorUsedError;
-  int get costInCredits => throw _privateConstructorUsedError;
+  String get model =>
+      throw _privateConstructorUsedError; // Cost in credits may return unknown
+  int? get costInCredits => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $VehicleCopyWith<Vehicle> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +30,7 @@ abstract class $VehicleCopyWith<$Res> {
   factory $VehicleCopyWith(Vehicle value, $Res Function(Vehicle) then) =
       _$VehicleCopyWithImpl<$Res, Vehicle>;
   @useResult
-  $Res call({String name, String model, int costInCredits});
+  $Res call({String name, String model, int? costInCredits});
 }
 
 /// @nodoc
@@ -47,7 +48,7 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
   $Res call({
     Object? name = null,
     Object? model = null,
-    Object? costInCredits = null,
+    Object? costInCredits = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -58,10 +59,10 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as String,
-      costInCredits: null == costInCredits
+      costInCredits: freezed == costInCredits
           ? _value.costInCredits
           : costInCredits // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -73,7 +74,7 @@ abstract class _$$_VehicleCopyWith<$Res> implements $VehicleCopyWith<$Res> {
       __$$_VehicleCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String model, int costInCredits});
+  $Res call({String name, String model, int? costInCredits});
 }
 
 /// @nodoc
@@ -88,7 +89,7 @@ class __$$_VehicleCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? model = null,
-    Object? costInCredits = null,
+    Object? costInCredits = freezed,
   }) {
     return _then(_$_Vehicle(
       null == name
@@ -99,10 +100,10 @@ class __$$_VehicleCopyWithImpl<$Res>
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as String,
-      null == costInCredits
+      freezed == costInCredits
           ? _value.costInCredits
           : costInCredits // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -116,8 +117,9 @@ class _$_Vehicle extends _Vehicle {
   final String name;
   @override
   final String model;
+// Cost in credits may return unknown
   @override
-  final int costInCredits;
+  final int? costInCredits;
 
   @override
   String toString() {
@@ -147,7 +149,7 @@ class _$_Vehicle extends _Vehicle {
 
 abstract class _Vehicle extends Vehicle {
   const factory _Vehicle(
-          final String name, final String model, final int costInCredits) =
+          final String name, final String model, final int? costInCredits) =
       _$_Vehicle;
   const _Vehicle._() : super._();
 
@@ -155,8 +157,8 @@ abstract class _Vehicle extends Vehicle {
   String get name;
   @override
   String get model;
-  @override
-  int get costInCredits;
+  @override // Cost in credits may return unknown
+  int? get costInCredits;
   @override
   @JsonKey(ignore: true)
   _$$_VehicleCopyWith<_$_Vehicle> get copyWith =>
