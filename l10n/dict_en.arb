@@ -1,0 +1,21 @@
+{
+  "@@locale": "en",
+  "app_name": "SWAPI Info",
+  "character": "Character",
+  "starship": "Starship",
+  "vehicle": "Vehicle",
+  "homeworld": "Homeworld",
+  "gender": "Gender",
+  "model": "Model",
+  "model_class": "Class",
+  "hyperdrive_rating": "Hyperdrive Rating",
+  "cost_in_credits": "Cost in Credits",
+  "manufacturer": "Manufacturer",
+  "name": "Name",
+  "population": "Population",
+  "climate": "Climate",
+  "search": "Search",
+  "unknown": "Unknown",
+  "no_data": "No data",
+  "loading": "Loading"
+}

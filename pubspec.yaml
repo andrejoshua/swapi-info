@@ -31,6 +31,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # We use auto route for screen routing
   auto_route: ^7.3.2
@@ -40,9 +42,6 @@ dependencies:
 
   # Env
   flutter_dotenv: ^5.1.0
-
-  # Localization
-  flutter_localization: ^0.1.14
 
   # Annotation and DTO helper
   freezed: ^2.3.4
@@ -116,6 +115,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  # This is needed for localization
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
 #  assets:
