@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_gen/gen_l10n/dictionary.dart";
-import "package:swapiinfo/design/display_sizes.dart";
+
+import "../display_sizes.dart";
 
 /// Showing default [Dialog].
 /// The dialog is usually used to load the page

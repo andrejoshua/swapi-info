@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:swapiinfo/design/display_sizes.dart";
+import 'package:swapiinfo/design/src/display_sizes.dart';
 
 class InfoItem extends StatelessWidget {
   const InfoItem({required this.label, required this.value, super.key});

@@ -1,33 +1,34 @@
 import "package:flutter/material.dart";
 import "package:flutter_gen/gen_l10n/dictionary.dart";
-import "package:swapiinfo/design/colors.dart";
-import "package:swapiinfo/design/display_sizes.dart";
-import "package:swapiinfo/design/molecule/info_item.dart";
 
-class CardVehicle extends StatelessWidget {
-  const CardVehicle({
+import "../colors.dart";
+import "../display_sizes.dart";
+import "../molecule/info_item.dart";
+
+class CardHomeworld extends StatelessWidget {
+  const CardHomeworld({
     required this.name,
-    required this.model,
-    required this.costInCredits,
+    required this.population,
+    required this.climate,
     super.key,
   });
 
   final String name;
-  final String model;
-  final String costInCredits;
+  final String population;
+  final String climate;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(kSpaceMarginDefault),
       decoration: BoxDecoration(
-        color: kColorVehicleBackground,
+        color: kColorHomeworldBackground,
         borderRadius: BorderRadius.circular(kRadiusDefault),
       ),
       child: Column(
         children: <Widget>[
           Text(
-            AppLocalizations.of(context)!.vehicle,
+            AppLocalizations.of(context)!.homeworld,
             style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
@@ -37,13 +38,14 @@ class CardVehicle extends StatelessWidget {
           const SizedBox(
             height: kSpaceMarginMedium,
           ),
-          InfoItem(label: AppLocalizations.of(context)!.model, value: model),
+          InfoItem(
+              label: AppLocalizations.of(context)!.population,
+              value: population),
           const SizedBox(
             height: kSpaceMarginMedium,
           ),
           InfoItem(
-              label: AppLocalizations.of(context)!.cost_in_credits,
-              value: costInCredits),
+              label: AppLocalizations.of(context)!.climate, value: climate),
         ],
       ),
     );

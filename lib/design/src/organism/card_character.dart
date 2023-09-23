@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_gen/gen_l10n/dictionary.dart";
-import "package:swapiinfo/design/colors.dart";
-import "package:swapiinfo/design/display_sizes.dart";
-import "package:swapiinfo/design/molecule/info_item.dart";
+
+import "../colors.dart";
+import "../display_sizes.dart";
+import "../molecule/info_item.dart";
 
 class CardCharacter extends StatelessWidget {
   const CardCharacter({

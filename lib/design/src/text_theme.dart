@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
-import "package:swapiinfo/design/colors.dart";
-import "package:swapiinfo/design/text_sizes.dart";
+
+import "colors.dart";
+import "text_sizes.dart";
 
 // This is a sample of using text theme
 const TextTheme kThemeText = TextTheme(
