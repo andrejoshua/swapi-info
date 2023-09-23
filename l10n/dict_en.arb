@@ -1,6 +1,7 @@
 {
   "@@locale": "en",
   "app_name": "SWAPI Info",
+  "characters": "Characters",
   "character": "Character",
   "starship": "Starship",
   "vehicle": "Vehicle",
