@@ -10,6 +10,7 @@ export "src/display_sizes.dart";
 export "src/molecule/info_item.dart";
 
 // Organisms
+export "src/organism/alert.dart";
 export "src/organism/card_character.dart";
 export "src/organism/card_homeworld.dart";
 export "src/organism/card_starship.dart";

@@ -18,5 +18,9 @@
   "search": "Search",
   "unknown": "Unknown",
   "no_data": "No data",
-  "loading": "Loading"
+  "loading": "Loading",
+  "error": "Error",
+  "exit": "Exit",
+  "runtime_error": "An error happened on the device",
+  "unknown_error": "Unknown error. Please retry again."
 }

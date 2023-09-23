@@ -5,6 +5,12 @@ import "../colors.dart";
 import "../display_sizes.dart";
 import "../molecule/info_item.dart";
 
+/// Reusable [CardHomeworld] specifically built to show Homeworld data
+/// Requires [name] to show homeworld name
+/// Requires [population] to show homeworld population
+/// Requires [climate] to show homeworld climate
+/// All of those values are required, and does not affect any state of each labels
+/// If there is an empty value, its own label will keep showing
 class CardHomeworld extends StatelessWidget {
   const CardHomeworld({
     required this.name,

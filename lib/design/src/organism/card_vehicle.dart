@@ -5,6 +5,12 @@ import "../colors.dart";
 import "../display_sizes.dart";
 import "../molecule/info_item.dart";
 
+/// Reusable [CardVehicle] specifically built to show Homeworld data
+/// Requires [name] to show vehicle name
+/// Requires [model] to show vehicle model
+/// Requires [costInCredits] to show vehicle's cost in credits
+/// All of those values are required, and does not affect any state of each labels
+/// If there is an empty value, its own label will keep showing
 class CardVehicle extends StatelessWidget {
   const CardVehicle({
     required this.name,

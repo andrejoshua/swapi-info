@@ -11,6 +11,8 @@ const Color kColorError = Color(0xFFD81D1D);
 const Color kColorText = Colors.black;
 const Color kColorTextWhite = Colors.white;
 
+// Sample of using color scheme
+// Now we will only use light theme
 const ColorScheme kSchemeLight = ColorScheme.light(
   primary: kColorCharacterBackground,
   onPrimary: kColorText,
