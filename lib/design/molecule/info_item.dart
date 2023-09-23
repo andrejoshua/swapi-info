@@ -13,7 +13,7 @@ class InfoItem extends StatelessWidget {
       children: <Widget>[
         Text(
           label,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: Theme.of(context).textTheme.labelSmall,
         ),
         const SizedBox(
           height: kSpaceInfo,
