@@ -9,8 +9,8 @@ void main() {
   SystemChrome.setPreferredOrientations(
       <DeviceOrientation>[DeviceOrientation.portraitUp]);
 
-  Chain.capture(() {
-    configureInjection();
+  Chain.capture(() async {
+    await configureInjection();
 
     runApp(const MyApp());
   });

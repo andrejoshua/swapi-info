@@ -5,3 +5,6 @@ const Duration kDefaultReceiveTimeout = Duration(milliseconds: 20000);
 
 // Base API URL
 const String kBaseUrl = "https://swapi.dev/api/";
+
+// GetIt scope for cache
+const String kScopeTemporaryDir = "TEMPORARY_DIRECTORY";
