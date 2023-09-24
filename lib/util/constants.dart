@@ -1,0 +1,1 @@
+const Duration kDurationSnackbar = Duration(seconds: 3);

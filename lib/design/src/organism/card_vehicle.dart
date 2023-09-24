@@ -27,20 +27,20 @@ class CardVehicle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(kSpaceMarginDefault),
+      width: kSizeCardDefault,
       decoration: BoxDecoration(
         color: kColorVehicleBackground,
         borderRadius: BorderRadius.circular(kRadiusDefault),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          // The lines will be set to 2 consistently
           Text(
-            AppLocalizations.of(context)!.vehicle,
+            "$name\n",
             style: Theme.of(context).textTheme.displayMedium,
+            maxLines: 2,
           ),
-          const SizedBox(
-            height: kSpaceMarginMedium,
-          ),
-          InfoItem(label: AppLocalizations.of(context)!.name, value: name),
           const SizedBox(
             height: kSpaceMarginMedium,
           ),

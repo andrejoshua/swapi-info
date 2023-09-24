@@ -5,6 +5,7 @@
 // Base files
 export "src/colors.dart";
 export "src/display_sizes.dart";
+export "src/molecule/bool_widget.dart";
 
 // Molecules
 export "src/molecule/info_item.dart";

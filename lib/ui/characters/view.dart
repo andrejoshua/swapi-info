@@ -1,5 +1,6 @@
 import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
+import "package:flutter/scheduler.dart";
 import "package:flutter_gen/gen_l10n/dictionary.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:swapiinfo/design/design.dart";
@@ -25,15 +26,7 @@ class _CharactersPageState extends State<CharactersPage> {
   void initState() {
     super.initState();
 
-    _vm.setCallbacks(() {
-      Loading.show(context);
-    }, () {
-      Loading.dismiss(context);
-    }, (CustomExceptionType type, String? message) {
-      Loading.dismiss(context);
-      Error.show(context, message: type.getActualMessage(context, message));
-    });
-
+    _vm.setCallbacks(_showLoading, _hideLoading, _showError);
     _vm.load();
   }
 
@@ -48,8 +41,7 @@ class _CharactersPageState extends State<CharactersPage> {
       body: Observer(
         builder: (_) {
           return ListView.separated(
-            padding:
-                const EdgeInsets.symmetric(horizontal: kSpaceMarginDefault),
+            padding: const EdgeInsets.all(kSpaceMarginDefault),
             shrinkWrap: true,
             itemCount: _vm.allCharacters.length,
             itemBuilder: (BuildContext context, int index) {
@@ -75,5 +67,37 @@ class _CharactersPageState extends State<CharactersPage> {
   void dispose() {
     _vm.destroy();
     super.dispose();
+  }
+
+  // Show loading, hide loading, and show error functions
+  // Flutter & AutoRoute is still incapable of using GlobalKey
+  // Also scheduler binding needs to be added in each screen
+  // So in order to show modal, we need to use widget context
+  void _showLoading() {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (AutoRouter.of(context).navigatorKey.currentContext != null) {
+        Loading.show(AutoRouter.of(context).navigatorKey.currentContext!);
+      }
+    });
+  }
+
+  void _hideLoading() {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (AutoRouter.of(context).navigatorKey.currentContext != null) {
+        Loading.dismiss(AutoRouter.of(context).navigatorKey.currentContext!);
+      }
+    });
+  }
+
+  void _showError(CustomExceptionType type, String? message) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (AutoRouter.of(context).navigatorKey.currentContext != null) {
+        final BuildContext functionContext =
+            AutoRouter.of(context).navigatorKey.currentContext!;
+        Loading.dismiss(functionContext);
+        Error.show(functionContext,
+            message: type.getActualMessage(functionContext, message));
+      }
+    });
   }
 }

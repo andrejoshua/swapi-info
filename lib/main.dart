@@ -12,6 +12,6 @@ void main() {
   Chain.capture(() {
     configureInjection();
 
-    runApp(MyApp());
+    runApp(const MyApp());
   });
 }
