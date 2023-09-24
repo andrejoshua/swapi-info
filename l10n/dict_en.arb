@@ -23,5 +23,6 @@
   "exit": "Exit",
   "runtime_error": "An error happened on the device",
   "unknown_error": "Unknown error. Please retry again.",
-  "internet_disconnected": "You are disconnected from internet. Please reconnect your device."
+  "internet_disconnected": "You are disconnected from internet. Please reconnect your device.",
+  "placeholder_search": "Search character names"
 }

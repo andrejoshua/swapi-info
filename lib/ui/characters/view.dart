@@ -21,6 +21,7 @@ class CharactersPage extends StatefulWidget {
 
 class _CharactersPageState extends State<CharactersPage> {
   final CharactersViewModel _vm = getIt<CharactersViewModel>();
+  final FocusNode _searchNode = FocusNode();
 
   @override
   void initState() {
@@ -38,33 +39,56 @@ class _CharactersPageState extends State<CharactersPage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(AppLocalizations.of(context)!.characters),
       ),
-      body: Observer(
-        builder: (_) {
-          return ListView.separated(
-            padding: const EdgeInsets.all(kSpaceMarginDefault),
-            shrinkWrap: true,
-            itemCount: _vm.allCharacters.length,
-            itemBuilder: (BuildContext context, int index) {
-              final Character character = _vm.allCharacters[index];
-              return CardCharacter(
-                name: character.name,
-                onClick: () {
-                  context.router.push(CharacterDetailRoute(id: character.id));
-                },
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) =>
-                const SizedBox(
+      body: Padding(
+        padding: const EdgeInsets.only(
+            left: kSpaceMarginDefault,
+            top: kSpaceMarginDefault,
+            right: kSpaceMarginDefault),
+        child: Column(
+          children: <Widget>[
+            SearchTextField(
+              focusNode: _searchNode,
+              onChanged: (String text) {
+                _vm.setKeyword(text);
+              },
+            ),
+            const SizedBox(
               height: kSpaceMarginDefault,
             ),
-          );
-        },
+            Expanded(
+              child: Observer(
+                builder: (_) {
+                  return ListView.separated(
+                    padding: const EdgeInsets.only(bottom: kSpaceMarginDefault),
+                    shrinkWrap: true,
+                    itemCount: _vm.allCharacters.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final Character character = _vm.allCharacters[index];
+                      return CardCharacter(
+                        name: character.name,
+                        onClick: () {
+                          context.router
+                              .push(CharacterDetailRoute(id: character.id));
+                        },
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const SizedBox(
+                      height: kSpaceMarginDefault,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
   @override
   void dispose() {
+    _searchNode.dispose();
     _vm.destroy();
     super.dispose();
   }
@@ -85,6 +109,7 @@ class _CharactersPageState extends State<CharactersPage> {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (AutoRouter.of(context).navigatorKey.currentContext != null) {
         Loading.dismiss(AutoRouter.of(context).navigatorKey.currentContext!);
+        _searchNode.requestFocus();
       }
     });
   }
