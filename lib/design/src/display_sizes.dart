@@ -6,6 +6,7 @@ const double kSpaceMarginSmall = 12.0;
 
 const double kRadiusDefault = 8.0;
 const double kRadiusLoading = 24.0;
+const double kRadiusSearch = 4.0;
 
 const double kSizeLoading = 120.0;
 const double kInsetLoading = 120.0;

@@ -25,6 +25,11 @@ const TextTheme kThemeText = TextTheme(
     fontWeight: FontWeight.normal,
     color: kColorText,
   ),
+  bodySmall: TextStyle(
+    fontSize: kSizeBodySmall,
+    fontWeight: FontWeight.w300,
+    color: kColorText,
+  ),
   labelSmall: TextStyle(
     fontSize: kSizeLabel,
     fontWeight: FontWeight.w600,
