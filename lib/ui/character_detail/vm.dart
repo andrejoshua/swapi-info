@@ -102,6 +102,7 @@ abstract class _CharacterDetailViewModel with Store {
 
     _loadStarships(detail.starshipIds);
     _loadVehicles(detail.vehicleIds);
+    _loadHomeworld(detail.homeworldId);
   }
 
   @action

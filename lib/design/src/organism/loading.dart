@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_gen/gen_l10n/dictionary.dart";
-
-import "../display_sizes.dart";
+import "package:swapiinfo/design/design.dart";
 
 /// Loading section
 /// Used to show Loading popup
@@ -50,14 +49,20 @@ class Loading {
         }
       },
       child: Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kRadiusLoading),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            AppLocalizations.of(context)!.loading,
-            style: Theme.of(context).textTheme.labelLarge,
+        insetPadding: const EdgeInsets.symmetric(horizontal: kInsetLoading),
+        backgroundColor: Colors.transparent,
+        child: Container(
+          height: kSizeLoading,
+          width: kSizeLoading,
+          decoration: BoxDecoration(
+            color: kColorBackground,
+            borderRadius: BorderRadius.circular(kRadiusLoading),
+          ),
+          child: Center(
+            child: Text(
+              AppLocalizations.of(context)!.loading,
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
           ),
         ),
       ),

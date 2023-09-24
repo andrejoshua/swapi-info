@@ -31,13 +31,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # This localization is needed to store words (dictionary)
   flutter_localizations:
     sdk: flutter
 
-  # We use auto route for screen routing
-  auto_route: ^7.3.2
+  # Flushbar, similar to snackbar on Android
+  another_flushbar: ^1.12.30
 
-  # Handles API calls
+  # We use auto route for screen routing
+  auto_route: ^7.8.3
+
+  # Handles API calls and caching
   dio: ^5.3.3
 
   # Env
@@ -50,6 +55,9 @@ dependencies:
   # Dependency Injection
   get_it: ^7.6.0
   injectable: ^2.1.1
+
+  # Connectivity checker
+  internet_connection_checker: ^1.0.0+1
 
   # DateTime
   intl: ^0.18.1
@@ -78,7 +86,7 @@ dev_dependencies:
     sdk: flutter
 
   # Generator for auto route
-  auto_route_generator: ^7.1.1
+  auto_route_generator: ^7.3.1
 
   # Generator engine
   build_runner: ^2.4.6
