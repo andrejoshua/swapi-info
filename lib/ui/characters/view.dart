@@ -98,6 +98,8 @@ class _CharactersPageState extends State<CharactersPage> {
   // Also scheduler binding needs to be added in each screen
   // So in order to show modal, we need to use widget context
   void _showLoading() {
+    _searchNode.unfocus();
+    FocusManager.instance.primaryFocus?.unfocus();
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (AutoRouter.of(context).navigatorKey.currentContext != null) {
         Loading.show(AutoRouter.of(context).navigatorKey.currentContext!);
@@ -123,6 +125,9 @@ class _CharactersPageState extends State<CharactersPage> {
         Error.show(functionContext,
             message: type.getActualMessage(functionContext, message));
       }
+
+      _searchNode.unfocus();
+      FocusManager.instance.primaryFocus?.unfocus();
     });
   }
 }

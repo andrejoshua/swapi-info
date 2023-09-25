@@ -1,6 +1,8 @@
+import "package:animated_text_kit/animated_text_kit.dart";
 import "package:flutter/material.dart";
 import "package:flutter_gen/gen_l10n/dictionary.dart";
 import "package:swapiinfo/design/design.dart";
+import "package:swapiinfo/design/src/constants.dart";
 
 /// Loading section
 /// Used to show Loading popup
@@ -59,13 +61,24 @@ class Loading {
             borderRadius: BorderRadius.circular(kRadiusLoading),
           ),
           child: Center(
-            child: Text(
-              AppLocalizations.of(context)!.loading,
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
+            child: _buildLoadingContent(context),
           ),
         ),
       ),
+    );
+  }
+
+  static Widget _buildLoadingContent(BuildContext context) {
+    return AnimatedTextKit(
+      animatedTexts: <AnimatedText>[
+        TyperAnimatedText(
+          AppLocalizations.of(context)!.loading,
+          textStyle: Theme.of(context).textTheme.labelLarge,
+          speed: kDurationAnimationSpeed,
+        ),
+      ],
+      pause: kDurationAnimationPause,
+      repeatForever: true,
     );
   }
 }
