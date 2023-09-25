@@ -16,6 +16,7 @@ class SearchTextField extends StatelessWidget {
   /// Defaults to null, [focusNode] is used input focus.
   final FocusNode? focusNode;
 
+  /// Callback for every text field input
   final Function(String)? onChanged;
 
   @override

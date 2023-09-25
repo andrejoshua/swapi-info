@@ -7,6 +7,7 @@ class Error {
 
   /// Showing default [AlertDialog] for information error.
   /// Use [message] to show alert message.
+  /// [isDismissible] determines if the dialog can be dismissed by touching back button or not
   static void show(
     BuildContext context, {
     required String message,
