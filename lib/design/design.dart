@@ -5,10 +5,12 @@
 // Base files
 export "src/colors.dart";
 export "src/display_sizes.dart";
+export "src/text_sizes.dart";
+export "src/text_theme.dart";
 
 // Molecules
+export "src/molecule/empty_widget.dart";
 export "src/molecule/info_item.dart";
-export "src/molecule/bool_widget.dart";
 export "src/molecule/search_text_field.dart";
 
 // Organisms
@@ -18,5 +20,4 @@ export "src/organism/card_homeworld.dart";
 export "src/organism/card_starship.dart";
 export "src/organism/card_vehicle.dart";
 export "src/organism/loading.dart";
-export "src/text_sizes.dart";
-export "src/text_theme.dart";
+export "src/organism/visibility_dash_widget.dart";
