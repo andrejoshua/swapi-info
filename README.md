@@ -71,6 +71,9 @@ There are few additional points i will explain given the picture:
   be persistent.
 - There is a usage of widget scaler, specifically on character_detail page. In order to scale the
   image larger for smaller devices.
+- SWAPI does not offer search functionality, so as for 25 September 2023, the search functionality
+  will depend on retrieved data. Also for now, in order to not break the characters data, this will
+  not have pagination functionality
 
 Issues found:
 
