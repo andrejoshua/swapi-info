@@ -121,7 +121,8 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
               child: EmptyWidget(),
             ),
             child: LimitedBox(
-              maxHeight: kSizeStarshipMax,
+              maxHeight:
+                  WidgetScaler.construct(context).scaledSize(kSizeStarshipMax),
               child: ListView.separated(
                 padding:
                     const EdgeInsets.symmetric(horizontal: kSpaceMarginDefault),
@@ -130,13 +131,17 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
                 itemCount: _vm.starships.length,
                 itemBuilder: (BuildContext context, int index) {
                   final Starship starship = _vm.starships[index];
-                  return CardStarship(
-                      model: starship.model,
-                      starshipClass: starship.starshipClass,
-                      hyperdriveRating: starship.hyperdriveRating.toString(),
-                      costInCredits:
-                          _getCostInCreditsValue(starship.costInCredits),
-                      manufacturer: starship.manufacturer);
+                  return SizedBox(
+                    width: WidgetScaler.construct(context)
+                        .scaledSize(kSizeCardDefault),
+                    child: CardStarship(
+                        model: starship.model,
+                        starshipClass: starship.starshipClass,
+                        hyperdriveRating: starship.hyperdriveRating.toString(),
+                        costInCredits:
+                            _getCostInCreditsValue(starship.costInCredits),
+                        manufacturer: starship.manufacturer),
+                  );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
                     const SizedBox(
@@ -172,7 +177,8 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
               child: EmptyWidget(),
             ),
             child: LimitedBox(
-              maxHeight: kSizeVehicleMax,
+              maxHeight:
+                  WidgetScaler.construct(context).scaledSize(kSizeVehicleMax),
               child: ListView.separated(
                 padding:
                     const EdgeInsets.symmetric(horizontal: kSpaceMarginDefault),
@@ -181,11 +187,16 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
                 itemCount: _vm.vehicles.length,
                 itemBuilder: (BuildContext context, int index) {
                   final Vehicle vehicle = _vm.vehicles[index];
-                  return CardVehicle(
+                  return SizedBox(
+                    width: WidgetScaler.construct(context)
+                        .scaledSize(kSizeCardDefault),
+                    child: CardVehicle(
                       name: vehicle.name,
                       model: vehicle.model,
                       costInCredits:
-                          _getCostInCreditsValue(vehicle.costInCredits));
+                          _getCostInCreditsValue(vehicle.costInCredits),
+                    ),
+                  );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
                     const SizedBox(

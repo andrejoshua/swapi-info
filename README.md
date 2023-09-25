@@ -69,6 +69,8 @@ There are few additional points i will explain given the picture:
   object, retaining the source and truth of data. If there are any changes, those need to be done in
   ViewModel. Once you send or receive the data to lower layer (API/local storage), the data needs to
   be persistent.
+- There is a usage of widget scaler, specifically on character_detail page. In order to scale the
+  image larger for smaller devices.
 
 Issues found:
 

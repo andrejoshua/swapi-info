@@ -21,3 +21,6 @@ export "src/organism/card_starship.dart";
 export "src/organism/card_vehicle.dart";
 export "src/organism/loading.dart";
 export "src/organism/visibility_dash_widget.dart";
+
+// Scaler
+export "src/scaler/widget_scaler.dart";

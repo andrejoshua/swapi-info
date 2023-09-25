@@ -33,7 +33,6 @@ class CardStarship extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(kSpaceMarginDefault),
-      width: kSizeCardDefault,
       decoration: BoxDecoration(
         color: kColorStarshipBackground,
         borderRadius: BorderRadius.circular(kRadiusDefault),
