@@ -1,10 +1,8 @@
-import "dart:async";
-
 import "package:another_flushbar/flushbar.dart";
-import "package:auto_route/auto_route.dart";
 import "package:flutter/material.dart";
 import "package:flutter_gen/gen_l10n/dictionary.dart";
 import "package:internet_connection_checker/internet_connection_checker.dart";
+import "package:rxdart_ext/rxdart_ext.dart";
 import "package:swapiinfo/design/design.dart";
 import "package:swapiinfo/route/app_router.dart";
 import "package:swapiinfo/util/constants.dart";
@@ -18,27 +16,36 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final GlobalKey<AutoRouterState> innerKey = GlobalKey<AutoRouterState>();
-
   final AppRouter _router = AppRouter();
 
-  late StreamSubscription<InternetConnectionStatus> _connectivityListener;
+  final CompositeSubscription _subscription = CompositeSubscription();
 
   @override
   void initState() {
     super.initState();
 
-    _connectivityListener = InternetConnectionChecker.createInstance(
-            checkInterval: const Duration(seconds: 1))
-        .onStatusChange
-        .listen((InternetConnectionStatus event) {
+    // Delay before listening to connection status
+    // The reason is to let the MaterialApp create the route first
+    Single<void>.fromCallable(() {})
+        .delay(kDurationInternetConnectionDelay)
+        .flatMap((Object? value) {
+      return InternetConnectionChecker.createInstance(
+              checkInterval: const Duration(seconds: 1))
+          .onStatusChange;
+    }).listen((InternetConnectionStatus event) {
       if (event == InternetConnectionStatus.disconnected) {
-        Flushbar<dynamic>(
-          message: AppLocalizations.of(context)!.internet_disconnected,
-          duration: kDurationSnackbar,
-        ).show(context);
+        final BuildContext? innerContext =
+            _router.navigatorKey.currentState?.overlay?.context;
+        if (innerContext != null) {
+          final String word =
+              AppLocalizations.of(innerContext)!.internet_disconnected;
+          Flushbar<dynamic>(
+            message: word,
+            duration: kDurationSnackbar,
+          ).show(innerContext);
+        }
       }
-    });
+    }).addTo(_subscription);
   }
 
   @override
@@ -55,7 +62,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    _connectivityListener.cancel();
+    _subscription.dispose();
     super.dispose();
   }
 }

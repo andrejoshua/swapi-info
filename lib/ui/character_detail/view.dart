@@ -114,9 +114,13 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
           height: kSpaceMarginSmall,
         ),
         Observer(builder: (_) {
-          return BoolWidget(
-            state: _vm.starships.isNotEmpty,
-            trueWidget: LimitedBox(
+          return Visibility(
+            visible: _vm.starships.isNotEmpty,
+            replacement: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: kSpaceMarginDefault),
+              child: EmptyWidget(),
+            ),
+            child: LimitedBox(
               maxHeight: kSizeStarshipMax,
               child: ListView.separated(
                 padding:
@@ -140,14 +144,6 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
                 ),
               ),
             ),
-            falseWidget: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: kSpaceMarginDefault),
-              child: Text(
-                "-",
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ),
           );
         })
       ],
@@ -169,9 +165,13 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
           height: kSpaceMarginSmall,
         ),
         Observer(builder: (_) {
-          return BoolWidget(
-            state: _vm.vehicles.isNotEmpty,
-            trueWidget: LimitedBox(
+          return Visibility(
+            visible: _vm.vehicles.isNotEmpty,
+            replacement: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: kSpaceMarginDefault),
+              child: EmptyWidget(),
+            ),
+            child: LimitedBox(
               maxHeight: kSizeVehicleMax,
               child: ListView.separated(
                 padding:
@@ -191,14 +191,6 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
                     const SizedBox(
                   width: kSpaceMarginDefault,
                 ),
-              ),
-            ),
-            falseWidget: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: kSpaceMarginDefault),
-              child: Text(
-                "-",
-                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           );
@@ -221,19 +213,17 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
             height: kSpaceMarginSmall,
           ),
           Observer(builder: (_) {
-            if (_vm.homeworld == null) {
-              // TODO(Andre): Avoid using string if possible
-              return Text(
-                "-",
-                style: Theme.of(context).textTheme.bodyLarge,
-              );
-            } else {
-              final Homeworld homeworld = _vm.homeworld!;
-              return CardHomeworld(
-                  name: homeworld.name,
-                  population: homeworld.population.toString(),
-                  climate: homeworld.climate);
-            }
+            final Homeworld? homeworld = _vm.homeworld;
+            return VisibilityDashWidget(
+              isVisible: _vm.homeworld != null,
+              contentWidget: SizedBox(
+                width: double.infinity,
+                child: CardHomeworld(
+                    name: homeworld?.name ?? "",
+                    population: homeworld?.population.toString() ?? "",
+                    climate: homeworld?.climate ?? ""),
+              ),
+            );
           })
         ],
       ),
